@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+ 
+   <!-- body -->
+   <body class="main-layout in_page">
+      <!-- loader  -->
+      <div class="loader_bg">
+         <div class="loader"><img src="{% static 'images/loading.gif' %}" alt="#"/></div>
+      </div>
+      <!-- end loader -->
+      <!-- header -->
+     
+      <!-- end header inner -->
+      <!-- end header -->
+      <!--  service -->
+      <div class="service">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Biz <span class="green">Haqimizda</span></h2>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-10 offset-md-4">
+                  <div class="row">
+                     {% for post in object_list %}
+                     {% if 44 < forloop.counter0 and 46 > forloop.counter0 %}
+                     <div class="col-md-4 offset-md-1 col-sm-6 mar_top">
+                        <div class="service_box">
+                           {% if post.image %}
+                           <i><img src="{{ post.image.url}}" alt="#"/></i>
+                           {% endif %}
+                           <h3>{{post.nomi}}</h3>
+                           <p>{{post.text|safe}}</p>
+                        </div>
+                     </div>
+                     <div class="col-md-12">
+                        
+                     </div>
+                     {% endif %}
+                     {% endfor %}
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+     
+
+
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+ <div id="about" class="about">
+         <div class="container">
+            <div class="row">
+               {% for post in object_list %}
+               {% if 0 < forloop.counter0 and 16 > forloop.counter0 %}
+               <div class="col-md-5">
+                  <div class="titlepage">
+                     <h2>{{post.nomi}} <span class="green"></span></h2>
+                     <p>{{post.text}}</p>           
+                  </div>
+               </div>
+               <div class="col-md-7">
+                  <div class="about_img">
+                     {% if post.image %}
+                     <figure><img src="{{post.image.url}}" alt="#"/></figure>
+                     {% endif %}
+                  </div>
+               </div>
+               {% endif %}
+               {% endfor %}
+            </div>
+         </div>
+      </div>
+
+{% endblock content %}

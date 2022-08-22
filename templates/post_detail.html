@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div id="about" class="about">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-5">
+                  <div class="titlepage">
+                     <h1>{{object.nomi}} <span class="green"></span></h1>
+                     <h3>{{object.text}}</h3>          
+                  </div>
+               </div>
+               <div class="col-md-7">
+                  <div class="about_img">             
+                     <figure><img src="{{object.image.url}}" alt="#"/></figure>  
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+
+{% endblock content %}

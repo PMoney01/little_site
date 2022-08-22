@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<header>
+                  <div class="col-md-9 offset-md-1">
+                     <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarsExample04">
+                           <ul class="navbar-nav mr-auto">
+                              <li class="nav-item active">                              
+                                 <button type="button" class="btn btn-outline-success"><a class="nav-link" href="{% url 'category' category_id=1 %}">Oshxona</a></button>
+                              </li>
+                              <li class="nav-item">
+                                 <button type="button" class="btn btn-outline-success"><a class="nav-link" href="{% url 'category' category_id=2 %}">Yotoqxona</a></button>
+                              </li>
+                              <li class="nav-item">
+                                 <button type="button" class="btn btn-outline-success"><a class="nav-link" href="{% url 'category' category_id=3 %}">Ofis</a></button>
+                              </li>
+                              <li class="nav-item">
+                                 <button type="button" class="btn btn-outline-success"><a class="nav-link" href="{% url 'category' category_id=4 %}">Mexmonxona</a></button>
+                              </li>
+                              <li class="nav-item">
+                                 <button type="button" class="btn btn-outline-success"><a class="nav-link" href="{% url 'category' category_id=5 %}"> Boshqalar </a></button>
+                              </li>
+                           </ul>
+                        </div>
+                     </nav>
+                  </div>
+</header>
+
+   <!-- body -->
+   <body class="main-layout in_page">
+      <!-- loader  -->
+      <div class="loader_bg">
+         <div class="loader"><img src="{% static 'images/loading.gif' %}" alt="#"/></div>
+      </div>
+      <!-- end loader -->
+      <!-- header -->
+     
+      <!-- end header inner -->
+      <!-- end header -->
+      <!-- gallery -->
+      <div class="gallery">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Our <span class="green">gallery</span></h2>
+                     <p>here are many variations of passages of Lorem Ipsum available, but the majority have suffer</p>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               {% for post in page %}
+               {% if 0 < forloop.counter0 and 16 > forloop.counter0 %}
+               <div class="col-md-4 col-sm-6">
+                  <div class="gallery_img">
+                     {% if post.image %}
+                     <a href="{% url 'post_detail' post.pk %}"><figure><img src="{{post.image.url}}" alt="#"/></figure></a>
+                     {% endif %}
+                     <a href="{% url 'post_detail' post.pk %}"><h4>{{post.nomi}}</h4></a>
+                  </div>
+               </div>
+               {% endif %}
+               {% endfor %}
+               <div class = "col-md-12 offset-md-4">
+                  {% if page.has_previous %}
+                  <button type="button" class="btn btn-outline-success">
+                  <a href="{% url 'gallery' %}?page={{page.previous_page_number}}"> Oldingi saxifa </button>
+                     {% endif %}
+                     {% if page.has_next %}
+                  <button type="button" class="btn btn-outline-success"> 
+                  <a href="{% url 'gallery' %}?page={{page.next_page_number}}"> Keyingi saxifa </button>
+                     {% endif %}
+               </div>
+            </div>
+         </div>
+      </div>
+      
+     
+
+
+
+{% endblock content %}
